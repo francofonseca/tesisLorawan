@@ -10,12 +10,14 @@
 \section{Diseño de arquitectura implementado}
     \textbf{\textit{Diagrama de arquitectura}}
 
-Tras la investigación del estado del arte decidí implementar la siguiente arquitectura de configuración basándome en el estado del arte de proyectos anteriores. Por lo que encontraran bastante similitud con los mismos, aunque por supuesto con diferencias específicas para apoyar al equipo de investigadores que usaran el sistema. En la figura 3.1 se muestra el diagrama final.
+Tras la investigación del estado del arte decidí implementar la siguiente arquitectura de configuración basándome en el estado del arte de proyectos anteriores. Por lo que encontraran bastante similitud con los mismos, aunque por supuesto con diferencias específicas para apoyar al equipo de investigadores que usaran el sistema. En la Figura \ref{fig:arquitectura-implementada} se muestra el diagrama final.
 
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=1.0\textwidth]{imagenes/LoraWanUAGArch.png}
-    \captionof{figure}{Arquitectura implementada para el sistema de nodos}
-\end{center}
+    \caption{Arquitectura implementada para el sistema de nodos}
+    \label{fig:arquitectura-implementada}
+\end{figure}
 
 El servidor físico cuenta con una instancia de Docker para facilitar su portabilidad a otros sistemas distintos o inclusive su montaje en la nube. Dentro del contenedor se encuentra instalado The Things Stack el cual nos facilita la comunicación con múltiples puertas de enlace de tipo RG191 asi como con la administración de los nodos LoRa que funcionan atraves del microcontrolador SMT32 con su antena SX1272.
 A continuación, explicare todos los pasos necesarios para la configuración y lanzamiento de un servidor.  
@@ -219,10 +221,12 @@ Actualice sus certificados
 
 Su árbol de archivos ahora debería verse así, excluyendo la carpeta blob
 
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=1.0\textwidth]{imagenes/imagenes_manual/treeoffiles.png}
-    \captionof{figure}{Árbol de archivos}
-\end{center}
+    \caption{Árbol de archivos}
+    \label{fig:arbol-de-archivos}
+\end{figure}
 
 \subsection{Configurar LAIRD Sentrius RG191}
 
@@ -230,26 +234,32 @@ Ahora que configuramos los certificados, estamos listos para configurar nuestro 
 
 Primero, debemos acceder a la puerta de enlace de Laird para hacerlo, consulte el \href{https://assets.lairdtech.com/home/brandworld/files/Sentrius%20RG1xx%20User%20Guide%20v2_2.pdf}{capítulo 4 de la documentación oficial} \textit{Inicie sesión en la puerta de enlace}.
 
-Deberíamos ver algo como en la figura 3.3.
+Deberíamos ver algo como en la Figura \ref{fig:rg191-pagina-principal}.
 
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=1.0\textwidth]{imagenes/imagenes_manual/mainpagerg191.png}
-    \captionof{figure}{Página principal del RG191}
-\end{center}
+    \caption{Página principal del RG191}
+    \label{fig:rg191-pagina-principal}
+\end{figure}
 
-Haga clic en la pestaña LAN y rellénelo con la siguiente información y guárdelo (Figura 3.4)
+Haga clic en la pestaña LAN y rellénelo con la siguiente información y guárdelo (Figura \ref{fig:rg191-ip-estatica}).
 
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=1.0\textwidth]{imagenes/imagenes_manual/modifystatic.png}
-    \captionof{figure}{Modificación de IP Estática en el RG191}
-\end{center}
+    \caption{Modificación de IP Estática en el RG191}
+    \label{fig:rg191-ip-estatica}
+\end{figure}
 
-Luego haga clic en LoRa y luego en la sección Forwarder y complete con la siguiente información y guárdela (Figura 3.5)
+Luego haga clic en LoRa y luego en la sección Forwarder y complete con la siguiente información y guárdela (Figura \ref{fig:rg191-lora-forwarder}).
 
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=1.0\textwidth]{imagenes/imagenes_manual/modifylora.png}
-    \captionof{figure}{Modificación del protocolo LoRa en el RG191}
-\end{center}
+    \caption{Modificación del protocolo LoRa en el RG191}
+    \label{fig:rg191-lora-forwarder}
+\end{figure}
 
 Ahora regrese al servidor, debemos verificar las interfaces disponibles para usar para comunicarnos con la puerta de enlace para hacerlo, usamos el siguiente comando
 
@@ -263,12 +273,14 @@ En nuestro caso vamos a usar enp3s0 como interfaz para comunicarnos con la puert
     sudo vim /etc/network/interfaces
 \end{lstlisting}
 
-Agregue la siguiente información al final del archivo y guárdelo (Figura 3.6)
+Agregue la siguiente información al final del archivo y guárdelo (Figura \ref{fig:interfaz-enp3s0}).
 
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=1.0\textwidth]{imagenes/imagenes_manual/staticIP.png}
-    \captionof{figure}{Interfaz enp3s0}
-\end{center}
+    \caption{Interfaz enp3s0}
+    \label{fig:interfaz-enp3s0}
+\end{figure}
 
 Reinicie interfaces de red
 
@@ -348,153 +360,190 @@ Ahora es el momento de pasar a configurar los dispositivos en el panale web
 
 \section{Configurar panel web}
 
-Una vez que accedemos al tablero desde el navegador, la primera página que deberíamos ver se verá así (Figura 3.7)
+Una vez que accedemos al tablero desde el navegador, la primera página que deberíamos ver se verá así (Figura \ref{fig:tts-login-page}).
 
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=1.0\textwidth]{imagenes/imagenes_manual/loginpage.png}
-    \captionof{figure}{Página principal de The Things Stack}
-\end{center}
+    \caption{Página principal de The Things Stack}
+    \label{fig:tts-login-page}
+\end{figure}
 
 Use sus credenciales de administrador que generó previamente para iniciar sesión
 
 \subsection{Registrar puerta de enlace}
 
-Ahora, en la consola principal, haga clic en ir a las puertas de enlace  (Figura 3.8)
+Ahora, en la consola principal, haga clic en ir a las puertas de enlace (Figura \ref{fig:gateways-menu}).
 
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=1.0\textwidth]{imagenes/imagenes_manual/gotogateways.png}
-    \captionof{figure}{Icono de la sección \textit{gateways} en el panel web}
-\end{center}
+    \caption{Icono de la sección \textit{gateways} en el panel web}
+    \label{fig:gateways-menu}
+\end{figure}
 
-Ahora haga clic en registrar una puerta de enlace (Figura 3.9)
+Ahora haga clic en registrar una puerta de enlace (Figura \ref{fig:gateways-list}).
 
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=1.0\textwidth]{imagenes/imagenes_manual/clickonregistergateway.png}
-    \captionof{figure}{Sección con el listado de todos los \textit{gateways} en el panel web}
-\end{center}
+    \caption{Sección con el listado de todos los \textit{gateways} en el panel web}
+    \label{fig:gateways-list}
+\end{figure}
 
-Complete los datos con su EUI correspondiente, ID de puerta de enlace y nombre de puerta de enlace, así como el plan de frecuencia.(Figura 3.10 y 3.11)
+Complete los datos con su EUI correspondiente, ID de puerta de enlace y nombre de puerta de enlace, así como el plan de frecuencia (Figuras \ref{fig:gateway-register-top} y \ref{fig:gateway-register-bottom}).
 
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=1.0\textwidth]{imagenes/imagenes_manual/registergateway1.png}
-    \captionof{figure}{Sección superior de configuración para registro de un \textit{gateway}}
-\end{center}
+    \caption{Sección superior de configuración para registro de un \textit{gateway}}
+    \label{fig:gateway-register-top}
+\end{figure}
 
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=1.0\textwidth]{imagenes/imagenes_manual/registergateway2.png}
-    \captionof{figure}{Sección inferior de configuración para registro de un \textit{gateway}}
-\end{center}
+    \caption{Sección inferior de configuración para registro de un \textit{gateway}}
+    \label{fig:gateway-register-bottom}
+\end{figure}
 
-Haga clic en registrar puerta de enlace y ahora debería ver una puerta de enlace como esta. (Figura 3.12)
+Haga clic en registrar puerta de enlace y ahora debería ver una puerta de enlace como esta (Figura \ref{fig:gateway-configured}).
 
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=1.0\textwidth]{imagenes/imagenes_manual/finishedgateway.png}
-    \captionof{figure}{Vista de un \textit{gateway} configurado}
-\end{center}
+    \caption{Vista de un \textit{gateway} configurado}
+    \label{fig:gateway-configured}
+\end{figure}
 
-También recuerde deshabilitar la conexión autenticada en caso de que quiera probar nuevos dispositivos LoRa sin credenciales (Figura 3.13)
+También recuerde deshabilitar la conexión autenticada en caso de que quiera probar nuevos dispositivos LoRa sin credenciales (Figura \ref{fig:gateway-auth-disable}).
 
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=1.0\textwidth]{imagenes/imagenes_manual/disableauth.png}
-    \captionof{figure}{Panel para desactivación de autenticación}
-\end{center}
+    \caption{Panel para desactivación de autenticación}
+    \label{fig:gateway-auth-disable}
+\end{figure}
 
-Ahora puede ver que todo fue exitoso una vez que comenzó a recibir datos en vivo (Figura 3.14) de su puerta de enlace (esto puede demorar hasta 1 o 2 minutos dependiendo de la latencia)
+Ahora puede ver que todo fue exitoso una vez que comenzó a recibir datos en vivo (Figura \ref{fig:gateway-traffic}) de su puerta de enlace (esto puede demorar hasta 1 o 2 minutos dependiendo de la latencia).
 
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=1.0\textwidth]{imagenes/imagenes_manual/trafficgateway.png}
-    \captionof{figure}{Trafico de la red interceptado en el \textit{gateway}}
-\end{center}
+    \caption{Trafico de la red interceptado en el \textit{gateway}}
+    \label{fig:gateway-traffic}
+\end{figure}
 
 \textit{Recuerda que si aún no tienes dispositivos solo verás mensajes administrativos}
 
 \subsection{Crear una aplicación}
 
-Ahora estamos listos para configurar una aplicación, esto se usa para encapsular todos los dispositivos en un solo punto y tomar información. Para hacerlo, regrese a la página principal de la consola y haga clic en ir a aplicaciones (Figura 3.15)
+Ahora estamos listos para configurar una aplicación, esto se usa para encapsular todos los dispositivos en un solo punto y tomar información. Para hacerlo, regrese a la página principal de la consola y haga clic en ir a aplicaciones (Figura \ref{fig:applications-menu}).
 
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=1.0\textwidth]{imagenes/imagenes_manual/gotoapps.png}
-    \captionof{figure}{Icono de la sección \textit{applications} en el panel web}
-\end{center}
+    \caption{Icono de la sección \textit{applications} en el panel web}
+    \label{fig:applications-menu}
+\end{figure}
 
-Haga clic en crear una aplicación (Figura 3.16)
+Haga clic en crear una aplicación (Figura \ref{fig:applications-list}).
 
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=1.0\textwidth]{imagenes/imagenes_manual/createapp.png}
-    \captionof{figure}{Sección con el listado de todos los \textit{applications} en el panel web}
-\end{center}
+    \caption{Sección con el listado de todos los \textit{applications} en el panel web}
+    \label{fig:applications-list}
+\end{figure}
 
-Rellénelo con información básica sobre su aplicación y asígnele una identificación única (Figura 3.17)
+Rellénelo con información básica sobre su aplicación y asígnele una identificación única (Figura \ref{fig:application-config}).
 
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=1.0\textwidth]{imagenes/imagenes_manual/createapp2.png}
-    \captionof{figure}{Sección de configuración para registro de un \textit{application}}
-\end{center}
+    \caption{Sección de configuración para registro de un \textit{application}}
+    \label{fig:application-config}
+\end{figure}
 
-Una vez hecho esto, será redirigido a la página de su aplicación (Figura 3.18)
+Una vez hecho esto, será redirigido a la página de su aplicación (Figura \ref{fig:application-view}).
 
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=1.0\textwidth]{imagenes/imagenes_manual/apppage.png}
-    \captionof{figure}{Vista de una \textit{application} configurada}
-\end{center}
+    \caption{Vista de una \textit{application} configurada}
+    \label{fig:application-view}
+\end{figure}
 
 \subsection{Registrar un nuevo dispositivo}
 
-Ahora necesitamos agregar algunos nodos o dispositivos a nuestra aplicación para comenzar a capturar datos. Haga clic en Dispositivos finales en la columna izquierda de su aplicación y será redirigido a algo como esto (Figura 3.19)
+Ahora necesitamos agregar algunos nodos o dispositivos a nuestra aplicación para comenzar a capturar datos. Haga clic en Dispositivos finales en la columna izquierda de su aplicación y será redirigido a algo como esto (Figura \ref{fig:device-section}).
 
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=1.0\textwidth]{imagenes/imagenes_manual/enddev.png}
-    \captionof{figure}{Sección superior de configuración para registro de un \textit{device}}
-\end{center}
+    \caption{Sección superior de configuración para registro de un \textit{device}}
+    \label{fig:device-section}
+\end{figure}
 
-Haga clic en Registrar dispositivo final y será redirigido nuevamente al formulario de registro de dispositivo final, haga clic en ingresar manualmente los detalles del dispositivo final (Figura 3.20)
+Haga clic en Registrar dispositivo final y será redirigido nuevamente al formulario de registro de dispositivo final, haga clic en ingresar manualmente los detalles del dispositivo final (Figura \ref{fig:device-register}).
 
-
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=1.0\textwidth]{imagenes/imagenes_manual/registerenddev.png}
-    \captionof{figure}{Sección superior de configuración para registro de un \textit{device}}
-\end{center}
+    \caption{Sección superior de configuración para registro de un \textit{device}}
+    \label{fig:device-register}
+\end{figure}
 
-Seleccione el plan de frecuencia adecuado y la especificación LoRaWAN (Figura 3.21)
+Seleccione el plan de frecuencia adecuado y la especificación LoRaWAN (Figura \ref{fig:device-frequency}).
 
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=1.0\textwidth]{imagenes/imagenes_manual/registerenddev2.png}
-    \captionof{figure}{Sección de frecuencia de configuración para registro de un \textit{device}}
-\end{center}
+    \caption{Sección de frecuencia de configuración para registro de un \textit{device}}
+    \label{fig:device-frequency}
+\end{figure}
 
-Debido a errores en la implementación, recomendamos el uso de 1.0.3
+Debido a errores en la implementación, recomendamos el uso de 1.0.3.
 
-Use activación de aire OTAA y clase A únicamente, también mantenga la configuración predeterminada de MAC (Figura 3.22)
+Use activación de aire OTAA y clase A únicamente, también mantenga la configuración predeterminada de MAC (Figura \ref{fig:device-otaa}).
 
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=1.0\textwidth]{imagenes/imagenes_manual/registerenddev3.png}
-    \captionof{figure}{Sección media de configuración para registro de un \textit{device}}
-\end{center}
+    \caption{Sección media de configuración para registro de un \textit{device}}
+    \label{fig:device-otaa}
+\end{figure}
 
-Agregue JoinEUI, este es básicamente el mismo EUI que viene con su puerta de enlace que se usa para comunicarse en ambos sentidos (Figura 3.23)
+Agregue JoinEUI, este es básicamente el mismo EUI que viene con su puerta de enlace que se usa para comunicarse en ambos sentidos (Figura \ref{fig:device-join-eui}).
 
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=1.0\textwidth]{imagenes/imagenes_manual/registerenddev4.png}
-    \captionof{figure}{Sección inferior de configuración para registro de un \textit{device}}
-\end{center}
+    \caption{Sección inferior de configuración para registro de un \textit{device}}
+    \label{fig:device-join-eui}
+\end{figure}
 
-Haga clic en confirmar y ahora podrá ver el dispositivo en su aplicación, así como acceder a él (Figura 3.24)
+Haga clic en confirmar y ahora podrá ver el dispositivo en su aplicación, así como acceder a él (Figura \ref{fig:device-configured}).
 
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=1.0\textwidth]{imagenes/imagenes_manual/deviceexample.png}
-    \captionof{figure}{Vista de un \textit{device} configurado}
-\end{center}
+    \caption{Vista de un \textit{device} configurado}
+    \label{fig:device-configured}
+\end{figure}
 
-Ahora todo está configurado, Conecte su dispositivo a la corriente y comenzará a recibir datos en poco tiempo justo como en la siguiente imagen (Figura 3.25)
+Ahora todo está configurado, Conecte su dispositivo a la corriente y comenzará a recibir datos en poco tiempo justo como en la siguiente imagen (Figura \ref{fig:device-live-data}).
 
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=1.0\textwidth]{imagenes/imagenes_manual/livedatafromnode.png}
-    \captionof{figure}{Vista de un \textit{device} configurado}
-\end{center}
+    \caption{Vista de un \textit{device} configurado}
+    \label{fig:device-live-data}
+\end{figure}
 
 \subsection{Leer información usando Linux}
 
-Una vez lanzadas todas las herramientas explicadas en los capítulos anteriores podemos notar que empezamos a recibir información a través del panel web (Figura 3.25) sin embargo podemos extender su funcionalidad leyendo la información utilizando la terminal de comandos. Gracias a esto, podemos tomar generar capas extra de funcionalidad.
+Una vez lanzadas todas las herramientas explicadas en los capítulos anteriores podemos notar que empezamos a recibir información a través del panel web (Figura \ref{fig:device-live-data}) sin embargo podemos extender su funcionalidad leyendo la información utilizando la terminal de comandos. Gracias a esto, podemos tomar generar capas extra de funcionalidad.
 
 La lectura de información del panel web se hace a través de su interfaz de programación de aplicaciones, utilizando el comando curl:
 
@@ -682,21 +731,25 @@ En nuestro caso, apache2 estaba tomando el puerto 80, por lo que necesitamos det
 
 P: Completé la información de la puerta de enlace pero no se registró
 
-R: A veces, la información de la puerta de enlace no se registra como se esperaba y tenemos que modificarla manualmente. Para hacerlo, vaya a la configuración y modifique el campo de dirección del servidor de la puerta de enlace.
+R: A veces, la información de la puerta de enlace no se registra como se esperaba y tenemos que modificarla manualmente. Para hacerlo, vaya a la configuración y modifique el campo de dirección del servidor de la puerta de enlace (Figura \ref{fig:gateway-ip-settings}).
 
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=1.0\textwidth]{imagenes/imagenes_manual/changestaticIP.png}
-    \captionof{figure}{Vista de configuración para la IP de un \textit{gateway}}
-\end{center}
+    \caption{Vista de configuración para la IP de un \textit{gateway}}
+    \label{fig:gateway-ip-settings}
+\end{figure}
 
 P: No puedo entender que la carga útil parece estar encriptada
 
-R: Puede deshabilitar los formateadores de la carga útil para ver los datos sin formato en caso de que quiera probar. Vaya a formateadores de carga útil en su dispositivo y seleccione Ninguno
+R: Puede deshabilitar los formateadores de la carga útil para ver los datos sin formato en caso de que quiera probar. Vaya a formateadores de carga útil en su dispositivo y seleccione Ninguno (Figura \ref{fig:payload-format-view}).
 
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=1.0\textwidth]{imagenes/imagenes_manual/disablepayloadformatters.png}
-    \captionof{figure}{Vista para el formato de los paquetes}
-\end{center}
+    \caption{Vista para el formato de los paquetes}
+    \label{fig:payload-format-view}
+\end{figure}
 
 Guardar los cambios
 
