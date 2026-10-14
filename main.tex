@@ -48,73 +48,64 @@
     \usepackage{contraportada/urls}
     \usepackage{float}
     \makeglossaries
-    
+
     \graphicspath{{imagenes/}} %Ubicación de imágenes
     \hypersetup{
         %Configuración comandos de referencia cruzada en LATEX:
-        colorlinks=true,
-        linkcolor=black,
-        citecolor=blue,
-        filecolor=blue,      
-        urlcolor=blue,
+colorlinks=true, linkcolor=black, citecolor=blue, filecolor=blue, urlcolor=blue,
         %Opciones de visualización e información PDF:
-        pdfauthor={"Jose Francisco Rosales Fonseca"},
-        pdftitle={"Configuración de un servidor Linux para el manejo de nodos a través del protocolo LoRaWAN."},
-        pdfsubject={"Configuración de un servidor Linux para el manejo de nodos a través del protocolo LoRaWAN."},
-        pdfcreator={"Jose Francisco Rosales Fonseca"},
-        pdfproducer={"Jose Francisco Rosales Fonseca"},
-        pdfkeywords={"Linux, LoRaWAN, IoT, The-Things-Stack, Linux, Docker"}
-    }
-    
+pdfauthor={"Jose Francisco Rosales Fonseca"}, pdftitle={"Configuración de un servidor Linux para el
+manejo de nodos a través del protocolo LoRaWAN."}, pdfsubject={"Configuración de un servidor Linux
+para el manejo de nodos a través del protocolo LoRaWAN."}, pdfcreator={"Jose Francisco Rosales
+Fonseca"}, pdfproducer={"Jose Francisco Rosales Fonseca"}, pdfkeywords={"Linux, LoRaWAN, IoT,
+The-Things-Stack, Linux, Docker"} }
+
     \begin{document}
 
         \lstset{basicstyle=\ttfamily,
-        showstringspaces=false,
-        commentstyle=\color{red},
-        keywordstyle=\color{blue}
-        }
-   
+showstringspaces=false, commentstyle=\color{red}, keywordstyle=\color{blue} }
+
         \input{portada/titulos}
-    
+
         \includepdf[]{portada/cartaaceptacion.pdf} %archivo PDF y nombre de tu carta de aceptación
-        
+
         \spacing{1.5}
-        
+
         \chapter*{Dedicatoria}
         \input{portada/dedicatoria}
-        
+
         \chapter*{Declaración expresa}
         \input{portada/declaracion}
-        
+
         \chapter*{Agradecimientos}
         \input{portada/agradecimientos}
-        
+
         \tableofcontents
-        
+
         \listoffigures
-         
+
         %\listoftables
         \printglossaries
-        
+
         \chapter{Introducción}
         \input{capitulos/capitulo01}    % Capitulo 01
-        
+
         \chapter{Estado del Arte y Bases Teóricas}
         \input{capitulos/capitulo02}    % Capitulo 02
-        
+
         \chapter{Metodología}
         \input{capitulos/capitulo03}    % Capitulo 03
-        
+
         \chapter{Conclusiones}
         \input{capitulos/capitulo04}    % Capitulo 04
-        
+
         %\chapter{Referencias}
         %\input{contraportada/anexos} 
-        
+
         \bibliographystyle{ieeetr} % Formato de la IEEE
         \phantomsection
         \addcontentsline{toc}{chapter}{\bibname}
         \bibliography{bibliografia/articulos,bibliografia/libros,bibliografia/miscellaneous}
-    
+
     \end{document}
 %-----------------------------------------------------------%

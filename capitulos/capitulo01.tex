@@ -2,20 +2,32 @@
 
 \section{Descripción del problema} \label{descripcionproblema}
 
-En una red inalámbrica de sensores de largo alcance y baja potencia, específicamente en aplicaciones de \gls{iot} para ciudades inteligentes se tiene la necesidad de comunicar múltiples microcontroladores para la creación de una red de dispositivos que midan variables físicas en tiempo real y envíen esta información recolectada a un centro de control ubicado remotamente. Debido a la necesidad de un punto central que recabe todos estos datos es necesario la implementación de un servidor maestro el cual debe ser escalable, sencillo de configurar y a prueba de fallos. En este contexto, es igual de importante, contar con una documentación detallada en caso de enfrentar errores comunes o la necesidad de cambiar configuraciones, para que el servidor pueda ser restablecido bajo cualquier circunstancia de falla.
+En una red inalámbrica de sensores de largo alcance y baja potencia, específicamente en aplicaciones
+de \gls{iot} para ciudades inteligentes se tiene la necesidad de comunicar múltiples
+microcontroladores para la creación de una red de dispositivos que midan variables físicas en tiempo
+real y envíen esta información recolectada a un centro de control ubicado remotamente. Debido a la
+necesidad de un punto central que recabe todos estos datos es necesario la implementación de un
+servidor maestro el cual debe ser escalable, sencillo de configurar y a prueba de fallos. En este
+contexto, es igual de importante, contar con una documentación detallada en caso de enfrentar
+errores comunes o la necesidad de cambiar configuraciones, para que el servidor pueda ser
+restablecido bajo cualquier circunstancia de falla.
 
-Por lo tanto, se requiere una solución a la necesidad de generar y configurar un servidor físico que funcione a manera de acceso entre un enrutador RG191 (de tecnología LoRa) y un microcontrolador STM32 núcleo L073RZ, así como un manual detallado de como replicarlo en caso de requerirlo.
+Por lo tanto, se requiere una solución a la necesidad de generar y configurar un servidor físico que
+funcione a manera de acceso entre un enrutador RG191 (de tecnología LoRa) y un microcontrolador
+STM32 núcleo L073RZ, así como un manual detallado de como replicarlo en caso de requerirlo.
 
 \section{Definición del problema} \label{definicionproblema}
 
-   
-Diversos proyectos de Internet de las cosas para aplicaciones de ciudades inteligentes para realizar pruebas de concepto en un ambiente controlado, no cuentas con un servidor maestro para el enrutamiento de la red de dispositivos IoT.
+Diversos proyectos de Internet de las cosas para aplicaciones de ciudades inteligentes para realizar
+pruebas de concepto en un ambiente controlado, no cuentas con un servidor maestro para el
+enrutamiento de la red de dispositivos IoT.
 
 \section{Objetivos del proyecto} \label{objetivoinvestigacion}
 
-
  \subsection{Objetivo General}
-Implementar un servidor Linux que funcione a manera de puente entre un enrutador RG191 de tecnología LoRa y una red de sensores basada en un microcontrolador STM32 núcleo L073RZ, y crear un manual detallado de configuración. \\
+Implementar un servidor Linux que funcione a manera de puente entre un enrutador RG191 de tecnología
+LoRa y una red de sensores basada en un microcontrolador STM32 núcleo L073RZ, y crear un manual
+detallado de configuración. \\
 \\
  \textbf{Objetivos específicos:}
  \begin{itemize}
@@ -26,17 +38,31 @@ Implementar un servidor Linux que funcione a manera de puente entre un enrutador
 
 \section{Delimitación } \label{delimitacioninvestigacion}
 
-
-El alcance de este proyecto pasa por la generación de documento que cuente con las instrucciones necesarias para replicar la generación de servidores puentes, así como más enrutadores en caso de que la red se quiera escalar en un futuro, así como su manejo interno. La validación del documento se hará experimentalmente en el lanzamiento de la aplicación.
+El alcance de este proyecto pasa por la generación de documento que cuente con las instrucciones
+necesarias para replicar la generación de servidores puentes, así como más enrutadores en caso de
+que la red se quiera escalar en un futuro, así como su manejo interno. La validación del documento
+se hará experimentalmente en el lanzamiento de la aplicación.
 \\
 \\
-El aporte del proyecto se puede resumir en dos elementos centrales. El primero es la generación de un documento que recopile todos los problemas encontrados, dudas más comunes, instrucciones generales y específicas, así como configuraciones de los dispositivos involucrados. El segundo es la configuración de un servidor físico así como de un enrutador para el manejo y gestión de los nodos \Gls{LoRa}.
+El aporte del proyecto se puede resumir en dos elementos centrales. El primero es la generación de
+un documento que recopile todos los problemas encontrados, dudas más comunes, instrucciones
+generales y específicas, así como configuraciones de los dispositivos involucrados. El segundo es la
+configuración de un servidor físico así como de un enrutador para el manejo y gestión de los nodos
+\Gls{LoRa}.
 
 \section{Justificación} \label{justificacion}
-    
- Los motivos que llevaron a la necesidad de crear un servidor maestro para el control de nodos \Gls{LoRa}, es la falta de una centralización y control de los nodos  \gls{iot} comunicados mediante la tecnología de largo alcance LoRa, los cuales son usados para sistemas IoT con aplicaciones para ciudades inteligentes. Debido a la escala del proyecto y la búsqueda de una forma de control centralizada de los mismos, es imperativo el desarrollo de esta solución para un control efectivo de datos y nodos, así como visualización de datos.
+
+Los motivos que llevaron a la necesidad de crear un servidor maestro para el control de nodos
+\Gls{LoRa}, es la falta de una centralización y control de los nodos  \gls{iot} comunicados mediante
+la tecnología de largo alcance LoRa, los cuales son usados para sistemas IoT con aplicaciones para
+ciudades inteligentes. Debido a la escala del proyecto y la búsqueda de una forma de control
+centralizada de los mismos, es imperativo el desarrollo de esta solución para un control efectivo de
+datos y nodos, así como visualización de datos.
 
 \section{Hipótesis} \label{Hipotesis}
 
-
-Contar con un servidor Linux configurado con todas las herramientas necesarias para el manejo de nodos \Gls{LoRa}, así como el uso de estas a través de contenedores para así ser tolerante a fallos, así mismo un manual detallado que describe todos los pasos sobre como configurar y restablecer este sistema con los problemas más comunes encontrados. De esta forma ahorrando tiempo para futuros desarrolladores o investigadores que busquen continuar trabajando en este proyecto.
+Contar con un servidor Linux configurado con todas las herramientas necesarias para el manejo de
+nodos \Gls{LoRa}, así como el uso de estas a través de contenedores para así ser tolerante a fallos,
+así mismo un manual detallado que describe todos los pasos sobre como configurar y restablecer este
+sistema con los problemas más comunes encontrados. De esta forma ahorrando tiempo para futuros
+desarrolladores o investigadores que busquen continuar trabajando en este proyecto.
