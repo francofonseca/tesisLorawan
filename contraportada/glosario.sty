@@ -1,13 +1,13 @@
 \newglossaryentry{LoRaWAN}
 {
     name=LoRaWAN,
-    description={Es protocolo de red que usa la tecnología LoRa, para redes de baja potencia y área amplia}
+    description={Protocolo y arquitectura de red de área amplia y bajo consumo que utiliza LoRa como tecnología de comunicación física entre los dispositivos finales y la infraestructura de red}
 }
 
 \newglossaryentry{LoRa}
 {
     name=LoRa,
-    description={Consiste en un protocolo de comunicación de radio con baja potencia}
+    description={Tecnología de modulación de radio de largo alcance y baja potencia utilizada como capa física en redes LoRaWAN}
 }
 
 \newglossaryentry{Computacion de frontera}
@@ -30,3 +30,40 @@
     description={Es una plataforma de software de código abierto para crear, implementar y administrar contenedores de aplicaciones virtualizados en un sistema operativo (SO) común, 
     con un ecosistema de herramientas aliadas}
 }
+
+\newglossaryentry{puerta-enlace}
+{
+    name={Puerta de enlace},
+    description={Equipo que recibe las transmisiones de radio de los dispositivos LoRaWAN y las reenvía al servidor de red mediante una conexión IP}
+}
+
+\newglossaryentry{nodo-final}
+{
+    name={Nodo final},
+    description={Dispositivo LoRaWAN que recopila datos o ejecuta una acción y se comunica por radio con una o más puertas de enlace}
+}
+
+\newglossaryentry{servidor-red}
+{
+    name={Servidor de red},
+    description={Componente LoRaWAN que gestiona la red, valida los mensajes recibidos y coordina la entrega de mensajes a los dispositivos}
+}
+
+\newglossaryentry{servidor-aplicacion}
+{
+    name={Servidor de aplicación},
+    description={Componente LoRaWAN que procesa los datos de aplicación de los dispositivos y los entrega a las aplicaciones o integraciones correspondientes}
+}
+
+\newglossaryentry{the-things-stack}
+{
+    name={The Things Stack},
+    description={Plataforma de software para desplegar y administrar redes LoRaWAN, dispositivos finales, puertas de enlace y aplicaciones}
+}
+
+\newacronym{iot}{IoT}{Internet de las cosas}
+\newacronym{mqtt}{MQTT}{Message Queuing Telemetry Transport}
+\newacronym{rssi}{RSSI}{indicador de fuerza de señal recibida}
+\newacronym{sf}{SF}{factor de dispersión}
+\newacronym{api}{API}{interfaz de programación de aplicaciones}
+\newacronym{json}{JSON}{JavaScript Object Notation}

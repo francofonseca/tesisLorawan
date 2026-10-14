@@ -2,7 +2,7 @@
 
 \section{Descripción del problema} \label{descripcionproblema}
 
-En una red inalámbrica de sensores de largo alcance y baja potencia, específicamente en aplicaciones de IoT para ciudades inteligentes se tiene la necesidad de comunicar múltiples microcontroladores para la creación de una red de dispositivos que midan variables físicas en tiempo real y envíen esta información recolectada a un centro de control ubicado remotamente. Debido a la necesidad de un punto central que recabe todos estos datos es necesario la implementación de un servidor maestro el cual debe ser escalable, sencillo de configurar y a prueba de fallos. En este contexto, es igual de importante, contar con una documentación detallada en caso de enfrentar errores comunes o la necesidad de cambiar configuraciones, para que el servidor pueda ser restablecido bajo cualquier circunstancia de falla.
+En una red inalámbrica de sensores de largo alcance y baja potencia, específicamente en aplicaciones de \gls{iot} para ciudades inteligentes se tiene la necesidad de comunicar múltiples microcontroladores para la creación de una red de dispositivos que midan variables físicas en tiempo real y envíen esta información recolectada a un centro de control ubicado remotamente. Debido a la necesidad de un punto central que recabe todos estos datos es necesario la implementación de un servidor maestro el cual debe ser escalable, sencillo de configurar y a prueba de fallos. En este contexto, es igual de importante, contar con una documentación detallada en caso de enfrentar errores comunes o la necesidad de cambiar configuraciones, para que el servidor pueda ser restablecido bajo cualquier circunstancia de falla.
 
 Por lo tanto, se requiere una solución a la necesidad de generar y configurar un servidor físico que funcione a manera de acceso entre un enrutador RG191 (de tecnología LoRa) y un microcontrolador STM32 núcleo L073RZ, así como un manual detallado de como replicarlo en caso de requerirlo.
 
@@ -34,7 +34,7 @@ El aporte del proyecto se puede resumir en dos elementos centrales. El primero e
 
 \section{Justificación} \label{justificacion}
     
- Los motivos que llevaron a la necesidad de crear un servidor maestro para el control de nodos \Gls{LoRa}, es la falta de una centralización y control de los nodos  IoT comunicados mediante la tecnología de largo alcance LoRa, los cuales son usados para sistemas IoT con aplicaciones para ciudades inteligentes. Debido a la escala del proyecto y la búsqueda de una forma de control centralizada de los mismos, es imperativo el desarrollo de esta solución para un control efectivo de datos y nodos, así como visualización de datos.
+ Los motivos que llevaron a la necesidad de crear un servidor maestro para el control de nodos \Gls{LoRa}, es la falta de una centralización y control de los nodos  \gls{iot} comunicados mediante la tecnología de largo alcance LoRa, los cuales son usados para sistemas IoT con aplicaciones para ciudades inteligentes. Debido a la escala del proyecto y la búsqueda de una forma de control centralizada de los mismos, es imperativo el desarrollo de esta solución para un control efectivo de datos y nodos, así como visualización de datos.
 
 \section{Hipótesis} \label{Hipotesis}
 

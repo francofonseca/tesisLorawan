@@ -75,7 +75,7 @@ Se hablan de las características pendientes por implementes, sin embargo, está
 
 \subsection{Adquisición flexible de datos mediante LoRaWAN y MQTT para pequeñas y medianas empresas}
 
- Este artículo \cite{lorawan_mqtt_data_acquisition} propone una solución de LoRaWAN y MQTT para pequeñas y medianas empresas, presentando una solución generalizada para distintos tipos 
+ Este artículo \cite{lorawan_mqtt_data_acquisition} propone una solución de LoRaWAN y \gls{mqtt} para pequeñas y medianas empresas, presentando una solución generalizada para distintos tipos
  de problemas que evade altos costos de inversión y poder obtener datos en un periodo corto de tiempo además la solución está basada en herramientas de código abierto, 
  obteniendo las ventajas de este tipo de herramientas. 
  
@@ -151,7 +151,7 @@ herramientas llamado The Things Networks el cual en Europa es fácilmente accesi
 Debido a que no se puede garantizar siempre tener internet en muchos países, se propone una solución utilizando nodos IoT locales a una puerta de enlace LoRaWAN sin la 
 necesidad de emplear redes de internet, a un bajo costo y poco poder de consumo. 
 
-Los investigadores implementaron tres bloques de la arquitectura LoRaWAN (Puerta de enlace, Servidor de Red, Servidor de Aplicación) en un solo dispositivo utilizando una Raspberry Pi 
+Los investigadores implementaron tres bloques de la arquitectura LoRaWAN (\gls{puerta-enlace}, \gls{servidor-red}, \gls{servidor-aplicacion}) en un solo dispositivo utilizando una Raspberry Pi
 y un modulo LoRaWAN. 
 El acceso local a los datos de la aplicación es a través de un punto de acceso WiFi, permitiendo a los miembros de la comunidad acceder a sus datos comunitarios incluso cuando no hay 
 internet. Además de datos IoT en tiempo real, los investigadores proponen servicios extra que pueden ser implementados en el repositorio para ayudar en el desarrollo de la educación, 
@@ -166,14 +166,14 @@ salud y otros contenidos que pueden apoyar a comunidades distantes.
 El dispositivo completo con todas estas características es llamado la Estación Base (BS en inglés).
 La arquitectura de la estación base es dividida en cuatro partes como se muestra en la Figura \ref{PartsOfBaseStation}: Puerta de enlace LoRaWAN (GW en inglés), Servidor de aplicación y de red, un componente llamado TIG (De las siglas Telegraf, InfluxDB y Grafana), el punto de acceso WiFi y el servidor de contenido
 
-Puerta de Enlace LoRaWAN Figure \ref{BSwith8and1channel}. Actúa como un transmisor de paquetes entre un nodo final y un servidor de red basado en la implementación de código abierto propuesta por Semtech y 
+\Gls{puerta-enlace} LoRaWAN Figure \ref{BSwith8and1channel}. Actúa como un transmisor de paquetes entre un \gls{nodo-final} y un \gls{servidor-red} basado en la implementación de código abierto propuesta por Semtech y
 construida en una Raspberry Pi. El equipo de investigadores cuenta con dos versiones, la más robusta que usa un módulo SX1301 la cual admite comunicación simultanea mientras escucha en ocho diferentes frecuencias y la mas barata utilizando un módulo RFM96W el cual solo admite un solo canal.
 
 Servidor de red y servidor de aplicación. El rol del servidor de red es autenticar nodos y estar seguro de que solo se reciben datos de los dispositivos registrados. 
 El servidor de aplicación provee procesamiento de tramas y su desencriptación. Asi mismo, ofrece al usuario final los datos solicitados, como el clima, la calidad del aire, alarmas, etc.
  Los datos son localmente procesados, guardados y se pueden accesar a través del punto de entrada WiFi 
 
-TIG. La herramienta de Telegraf es usada para suscribirse a un intermediario de mensajes MQTT y recolectar mensajes en formato JSON los cuales son transmitidos por el servidor de
+TIG. La herramienta de Telegraf es usada para suscribirse a un intermediario de mensajes MQTT y recolectar mensajes en formato \gls{json} los cuales son transmitidos por el servidor de
  aplicación LoRa y esto se inyectan en InfluxDB una base de datos de series de tiempo (TSDB en inglés). Gracias a Grafana (Una plataforma de código abierto para gráfico de datos) las mediciones pueden ser obtenidas de InfluxDB para su análisis y monitoreo.
 
 Servidor de Contenido. El servidor de contenido provee acceso al contenido estático, como el material educacional, información de salud, las mejores prácticas de agricultura, etc. 
@@ -192,11 +192,11 @@ El trabajo futuro de los investigadores se centrará en el tablón de anuncios y
 
 En el siguiente trabajo de final de grado \cite{particionado_de_red_lorawan} vemos que en este se propone dividir los recursos de una red LoRaWAN en segmentos o 
 \textit{slices}, que puedan asignarse a distintos usuarios o proveedores. Para ello, define un bloque de recursos (RB) como la combinación de un canal y un 
-factor de dispersión (SF). En la configuración estudiada, los ocho canales de 125 kHz y los SF del 7 al 12 permiten formar hasta 48 combinaciones de recursos.
+ \gls{sf}. En la configuración estudiada, los ocho canales de 125 kHz y los SF del 7 al 12 permiten formar hasta 48 combinaciones de recursos.
 
 La solución se implementa sobre una red LoRaWAN con ChirpStack y dispositivos reales. El servidor asocia cada dispositivo con un \textit{slice} y, durante el 
 intercambio de mensajes de unión, envía al dispositivo una máscara que indica los RB disponibles. A partir de esa máscara, el dispositivo selecciona un RB y 
-configura el canal y el SF de transmisión según las condiciones de la señal, estimadas mediante el indicador de fuerza de señal recibida (RSSI) o la relación 
+configura el canal y el SF de transmisión según las condiciones de la señal, estimadas mediante \gls{rssi} o la relación
 señal-ruido (SNR). Así, la selección del SF puede ajustarse a la calidad del enlace, mientras que la separación por canal y SF permite organizar las transmisiones 
 de distintos usuarios.
 
@@ -326,8 +326,8 @@ utilizando una conexión IP estándar. En la Figura \ref{fig:LoRaWANTopologia} s
 
 \gls{Docker} es un motor de contenedores de código libre que utiliza una virtualización\cite{docker_definition} ligera permitiendo automatizar el despliegue de 
 aplicaciones mediante \gls{Contenedor} virtuales. Esto significa que puede encapsular las aplicaciones dentro de un contenedor junto con sus dependencias y ejecutarlos sobre 
-cualquier equipo que tenga instalada la plataforma \gls{Docker}, usualmente servidores Linux, nubes públicas y privadas. \gls{Docker} amplía LXC con un kernel y una Interfaz de 
-Programación de Aplicaciones (API, por sus siglas en inglés) a nivel de aplicación que permiten la ejecución de procesos aislando CPU, memoria, E/S, red, etc. Además, 
+cualquier equipo que tenga instalada la plataforma \gls{Docker}, usualmente servidores Linux, nubes públicas y privadas. \gls{Docker} amplía LXC con un kernel y una
+\gls{api} a nivel de aplicación que permiten la ejecución de procesos aislando CPU, memoria, E/S, red, etc. Además,
 Docker utiliza diferentes espacios de nombre para aislar por completo la vista de una aplicación del entorno subyacente (sistema operativo), lo que incluye los árboles de 
 procesos, la red, los IDs de usuario y los sistemas de archivos
 
