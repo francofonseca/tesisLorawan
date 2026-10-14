@@ -1,0 +1,121 @@
+%-----------------------------------------------------------%
+% Propuesta de plantilla en LaTeX para tesis formato UAG    %
+% Autor: Jose Francisco Rosales Fonseca                     % 
+% Contacto: francofonseca501@gmail.com                      %
+% Fecha: Diciembre  2022                                    %
+%-----------------------------------------------------------%
+% El objetivo de esta plantilla es facilitar la redacción   %
+% en LaTeX de tu tesis siguiendo los lineamientos de la UAG.%
+% Mi intención es pues que se dedique el tiempo al          %
+% contenido de la tesis evitando las largas horas           %
+% entendiendo LaTeX.                                        %  
+% Siéntete libre de modificar la plantilla de acuerdo a tus %
+% necesidades.                                              %
+%-----------------------------------------------------------%
+% Utiliza el libro libro LaTeX_2014.pdf que se encuentra    %
+% dentro de la carpeta "ayuda" para más información.        %
+%-----------------------------------------------------------%
+
+%-----------------------------------------------------------%
+% Las siguientes configuraciones son con el objetivo de una
+% tesis en español siguiendo los lineamientos estipulados
+% en: http://crecea.uag.mx/opciones/tesis.htm
+% En relación al diseño de la portada los lineamientos 
+% estipulados en: http://crecea.uag.mx/opciones/portada.htm
+
+    \documentclass[12pt,twoside]{report}
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc} % only needed for older LaTeX
+    \usepackage{pdfpages}
+    \usepackage{longtable,multirow,booktabs}
+    \usepackage{setspace}
+    \usepackage{graphicx}
+    \usepackage{cite}
+    \usepackage{tabu}
+    \usepackage[spanish, es-tabla]{babel}
+    \usepackage{amssymb}
+    \usepackage{amsmath}
+    \usepackage{esvect}
+    \usepackage{hyperref}
+    \usepackage[a4paper,width=150mm,top=25mm,bottom=25mm,bindingoffset=6mm]{geometry} %Formato márgenes, etc.
+    \usepackage[font=footnotesize,labelfont=bf]{caption}
+    \usepackage{minted}
+    \usepackage{tikz}
+    \usepackage{verbatim}
+    \usepackage[nopostdot,acronym,toc,section=chapter,style=indexgroup,nomain]{glossaries}      \usepackage{listings}
+    \usepackage{xcolor}
+    \usepackage{contraportada/glosario}
+    \usepackage{contraportada/urls}
+    \usepackage{float}
+    \makeglossaries
+    
+    \graphicspath{{imagenes/}} %Ubicación de imágenes
+    \hypersetup{
+        %Configuración comandos de referencia cruzada en LATEX:
+        colorlinks=true,
+        linkcolor=black,
+        citecolor=blue,
+        filecolor=blue,      
+        urlcolor=blue,
+        %Opciones de visualización e información PDF:
+        pdfauthor={"Jose Francisco Rosales Fonseca"},
+        pdftitle={"Configuración de un servidor Linux para el manejo de nodos a través del protocolo LoRaWAN."},
+        pdfsubject={"Configuración de un servidor Linux para el manejo de nodos a través del protocolo LoRaWAN."},
+        pdfcreator={"Jose Francisco Rosales Fonseca"},
+        pdfproducer={"Jose Francisco Rosales Fonseca"},
+        pdfkeywords={"Linux, LoRaWAN, Docker"}
+    }
+    
+    \begin{document}
+
+        \lstset{basicstyle=\ttfamily,
+        showstringspaces=false,
+        commentstyle=\color{red},
+        keywordstyle=\color{blue}
+        }
+   
+        \input{portada/titulos}
+    
+        \includepdf[]{portada/cartaaceptacion.pdf} %archivo PDF y nombre de tu carta de aceptación
+        
+        \spacing{1.5}
+        
+        \chapter*{Dedicatoria}
+        \input{portada/dedicatoria}
+        
+        \chapter*{Declaración expresa}
+        \input{portada/declaracion}
+        
+        \chapter*{Agradecimientos}
+        \input{portada/agradecimientos}
+        
+        \tableofcontents
+        
+        \listoffigures
+         
+        %\listoftables
+        
+        \chapter{Introducción}
+        \input{capitulos/capitulo01}    % Capitulo 01
+        
+        \chapter{Estado del Arte y Bases Teóricas}
+        \input{capitulos/capitulo02}    % Capitulo 02
+        
+        \chapter{Metodología}
+        \input{capitulos/capitulo03}    % Capitulo 03
+        
+        \chapter{Conclusiones}
+        \input{capitulos/capitulo04}    % Capitulo 04
+        
+        %\chapter{Referencias}
+        %\input{contraportada/anexos} 
+
+        \printglossaries
+        
+        \bibliographystyle{ieeetr} % Formato de la IEEE
+        \phantomsection
+        \addcontentsline{toc}{chapter}{\bibname}
+        \bibliography{bibliografia/articulos,bibliografia/libros,bibliografia/miscellaneous}
+    
+    \end{document}
+%-----------------------------------------------------------%
